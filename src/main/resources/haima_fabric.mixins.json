@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "com.glyceri.haima.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"HaimaMixin"
+	],
+	"client": [
+		"client.HaimaClientMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

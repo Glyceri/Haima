@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "haima",
+	"version": "${version}",
+	"name": "Haima",
+	"description": "Haima is a mod I do not know what to do with yet!",
+	"authors": [
+		"Glyceri"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/haima/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.glyceri.haima.HaimaMod"
+		],
+		"client": [
+			"com.glyceri.haima.HaimaModClient"
+		]
+	},
+	"mixins": [
+		"haima_fabric.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
