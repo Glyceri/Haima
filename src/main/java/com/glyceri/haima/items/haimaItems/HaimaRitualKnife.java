@@ -4,18 +4,13 @@ import com.glyceri.haima.HaimaMod;
 import com.glyceri.haima.items.HaimaTaggedItem;
 import com.glyceri.haima.items.ItemHandler;
 
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageSources;
-import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemCooldowns;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -34,7 +29,7 @@ public class HaimaRitualKnife extends HaimaTaggedItem
 	{
 		if (livingEntity2 instanceof Player player) 
 		{
-			tryCreateBloodBottle(player, livingEntity);
+			tryCreateBloodBottle(itemStack, player, livingEntity);
 		}
 		return super.hurtEnemy(itemStack, livingEntity, livingEntity2);
 	}
@@ -48,11 +43,12 @@ public class HaimaRitualKnife extends HaimaTaggedItem
 		ItemStack stack = player.getItemInHand(interactionHand);
 		if (stack == null) return super.use(level, player, interactionHand);
 		
-		tryCreateBloodBottle(player, player);
+		tryCreateBloodBottle(stack, player, player);
 		
 		if (player.isAlive()) 
 		{		
 			player.hurt(player.damageSources().cactus(), 2);
+			damageKnife(stack, player);
 		}
 		
 		return super.use(level, player, interactionHand);
@@ -63,9 +59,10 @@ public class HaimaRitualKnife extends HaimaTaggedItem
 		itemStack.hurtAndBreak(1, livingEntity, EquipmentSlot.MAINHAND);
 	}
 	
-	void tryCreateBloodBottle(Player dealer, LivingEntity target) 
+	void tryCreateBloodBottle(ItemStack ritualKnife, Player dealer, LivingEntity target) 
 	{
 		ItemStack slot = getSlotWithBottles(dealer);
+		
 		if (slot == null) 
 		{
 			dealer.sendSystemMessage(Component.translatable(HaimaMod.MOD_ID + ".message.ritual_knife_no_bottle"));
@@ -73,11 +70,8 @@ public class HaimaRitualKnife extends HaimaTaggedItem
 		}
 
 		removeGlassBottle(slot, dealer);
-		
-		ItemStack bloodBottle = createBloodBottle();
-		HaimaTaggedItem.setTagged(bloodBottle, target);
-		
-		addBottleToInventory(bloodBottle, dealer);
+		handleBloodBottle(dealer, target);
+		setKnifeCooldown(dealer, ritualKnife);
 	}
 	
 	ItemStack getSlotWithBottles(Player dealer) 
@@ -100,6 +94,19 @@ public class HaimaRitualKnife extends HaimaTaggedItem
 		stack.shrink(1);
 	}
 	
+	void handleBloodBottle(Player dealer, LivingEntity target) 
+	{
+		ItemStack bloodBottle = createBloodBottle();
+		HaimaTaggedItem.setTagged(bloodBottle, target);
+		addBottleToInventory(bloodBottle, dealer);
+	}
+	
+	void setKnifeCooldown(Player dealer, ItemStack ritualKnife) 
+	{
+		ItemCooldowns cooldowns = dealer.getCooldowns();
+		cooldowns.addCooldown(ritualKnife.getItem(), 20);
+	}
+	
 	ItemStack createBloodBottle() 
 	{
 		return new ItemStack(ItemHandler.BLOOD_BOTTLE);
@@ -111,12 +118,4 @@ public class HaimaRitualKnife extends HaimaTaggedItem
 		
 		player.drop(stack, false, true);
 	}
-	
-	/*
-	@Override
-	public void postHurtEnemy(ItemStack itemStack, LivingEntity livingEntity, LivingEntity livingEntity2) 
-	{
-		itemStack.hurtAndBreak(1, livingEntity, EquipmentSlot.MAINHAND);
-	}
-	*/
 }
