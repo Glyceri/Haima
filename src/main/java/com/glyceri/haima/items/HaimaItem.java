@@ -8,6 +8,4 @@ public abstract class HaimaItem extends Item
 	{
 		super(properties);
 	}
-
-	public abstract String GetItemID();
 }
