@@ -1,13 +1,12 @@
 package com.glyceri.haima.items;
 
-import net.minecraft.item.Item;
+import net.minecraft.world.item.Item;
 
 public abstract class HaimaItem extends Item 
 {
-	public HaimaItem(Settings settings)
+	public HaimaItem(Properties properties)
 	{
-		super(settings);
-		
+		super(properties);
 	}
 
 	public abstract String GetItemID();

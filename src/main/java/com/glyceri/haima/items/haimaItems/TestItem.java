@@ -6,9 +6,9 @@ public class TestItem extends HaimaItem
 {
 	final String ITEM_ID = "test_item";
 	
-	public TestItem() 
+	public TestItem(Properties properties) 
 	{
-		super(new Settings());
+		super(properties);
 	}
 
 	@Override public String GetItemID() { return ITEM_ID; }

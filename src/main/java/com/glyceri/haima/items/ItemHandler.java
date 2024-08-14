@@ -4,28 +4,21 @@ import com.glyceri.haima.HaimaMod;
 import com.glyceri.haima.items.haimaItems.HaimaBlankScroll;
 import com.glyceri.haima.items.haimaItems.TestItem;
 
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
+import net.blay09.mods.balm.api.item.BalmItems;
+import net.minecraft.resources.ResourceLocation;
 
-public final class ItemHandler 
+public final class ItemHandler
 {
-	public static final HaimaItem TEST_ITEM = new TestItem();
+	public static HaimaItem TEST_ITEM;
+	public static HaimaBlankScroll BLANK_SCROLL;
 	
-	public static final HaimaBlankScroll BLANK_SCROLL = new HaimaBlankScroll();
-	
-	public ItemHandler() { _register(); }
-	
-	void _register() 
+	public static void Initialise(BalmItems items) 
 	{
-		register(TEST_ITEM);
-		register(BLANK_SCROLL);
+		items.registerItem(() -> TEST_ITEM = new TestItem(items.itemProperties()), id(TEST_ITEM.GetItemID()));
+		items.registerItem(() -> BLANK_SCROLL = new HaimaBlankScroll(items.itemProperties()), id(BLANK_SCROLL.GetItemID()));
 	}
-	
-	void register(HaimaItem haimaItem) 
-	{
-		Identifier itemID = Identifier.of(HaimaMod.MOD_ID, haimaItem.GetItemID());
-		
-		Registry.register(Registries.ITEM, itemID, haimaItem);
-	}
+
+    static ResourceLocation id(String name) {
+        return ResourceLocation.fromNamespaceAndPath(HaimaMod.MOD_ID, name);
+    }
 }

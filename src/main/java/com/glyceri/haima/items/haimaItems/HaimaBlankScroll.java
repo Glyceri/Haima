@@ -6,11 +6,12 @@ public class HaimaBlankScroll extends HaimaItem
 {
 	final String ITEM_ID = "blank_scroll";
 	
-	public HaimaBlankScroll()
+	public HaimaBlankScroll(Properties properties)
 	{
-		super(new Settings());
+		super(properties);
 	}
 
 	@Override
 	public String GetItemID() { return ITEM_ID; }
+	
 }
