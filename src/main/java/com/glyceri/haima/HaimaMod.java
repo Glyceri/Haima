@@ -18,6 +18,7 @@ public class HaimaMod implements ModInitializer
 	@Override
 	public void onInitialize() 
 	{
+		LOGGER.info("Starting Haima");
 		Balm.initialize(HaimaMod.MOD_ID, EmptyLoadContext.INSTANCE, () ->
 		{
 			ItemHandler.Initialise(Balm.getItems());

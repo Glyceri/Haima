@@ -1,19 +1,38 @@
 package com.glyceri.haima.items;
 
+import java.util.List;
 import java.util.UUID;
 
 import com.glyceri.haima.components.HaimaComponents;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 
 public abstract class HaimaTaggedItem extends HaimaItem
 {
 	public HaimaTaggedItem(Properties properties)
 	{
 		super(properties);
+	}
+	
+	@Override
+	public void appendHoverText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag tooltipFlag)
+	{
+		if (!hasUUID(itemStack)) return;
+		
+		tooltip.add(Component.literal(getTaggedName(itemStack)).withStyle(ChatFormatting.GRAY));
+	
+		boolean shifting = Screen.hasShiftDown();
+		if (!shifting) return;
+		
+		tooltip.add(Component.literal(getTaggedUUID(itemStack).toString()).withStyle(ChatFormatting.DARK_GRAY));
 	}
 	
 	public static void addItemToInventoryAndConsume(Player player, InteractionHand hand, ItemStack toAdd) {
