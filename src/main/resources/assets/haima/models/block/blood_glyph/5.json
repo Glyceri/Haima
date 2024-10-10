@@ -1,0 +1,6 @@
+{
+  "parent": "haima:block/blood_glyph/blood_glyph",
+  "textures": {
+    "texture": "haima:block/blood_glyph/5"
+  }
+}

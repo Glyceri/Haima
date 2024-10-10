@@ -1,0 +1,94 @@
+{
+  "variants": {
+    "facing=east,blood_type=0": {
+      "model": "haima:block/blood_glyph/0",
+      "y": 270
+    },
+    "facing=east,blood_type=1": {
+      "model": "haima:block/blood_glyph/1",
+      "y": 270
+    },
+    "facing=east,blood_type=2": {
+      "model": "haima:block/blood_glyph/2",
+      "y": 270
+    },
+    "facing=east,blood_type=3": {
+      "model": "haima:block/blood_glyph/3",
+      "y": 270
+    },
+    "facing=east,blood_type=4": {
+      "model": "haima:block/blood_glyph/4",
+      "y": 270
+    },
+    "facing=east,blood_type=5": {
+      "model": "haima:block/blood_glyph/5",
+      "y": 270
+    },
+    "facing=north,blood_type=0": {
+      "model": "haima:block/blood_glyph/0",
+      "y": 180
+    },
+    "facing=north,blood_type=1": {
+      "model": "haima:block/blood_glyph/1",
+      "y": 180
+    },
+    "facing=north,blood_type=2": {
+      "model": "haima:block/blood_glyph/2",
+      "y": 180
+    },
+    "facing=north,blood_type=3": {
+      "model": "haima:block/blood_glyph/3",
+      "y": 180
+    },
+    "facing=north,blood_type=4": {
+      "model": "haima:block/blood_glyph/4",
+      "y": 180
+    },
+    "facing=north,blood_type=5": {
+      "model": "haima:block/blood_glyph/5",
+      "y": 180
+    },
+    "facing=south,blood_type=0": {
+      "model": "haima:block/blood_glyph/0"
+    },
+    "facing=south,blood_type=1": {
+      "model": "haima:block/blood_glyph/1"
+    },
+    "facing=south,blood_type=2": {
+      "model": "haima:block/blood_glyph/2"
+    },
+    "facing=south,blood_type=3": {
+      "model": "haima:block/blood_glyph/3"
+    },
+    "facing=south,blood_type=4": {
+      "model": "haima:block/blood_glyph/4"
+    },
+    "facing=south,blood_type=5": {
+      "model": "haima:block/blood_glyph/5"
+    },
+    "facing=west,blood_type=0": {
+      "model": "haima:block/blood_glyph/0",
+      "y": 90
+    },
+    "facing=west,blood_type=1": {
+      "model": "haima:block/blood_glyph/1",
+      "y": 90
+    },
+    "facing=west,blood_type=2": {
+      "model": "haima:block/blood_glyph/2",
+      "y": 90
+    },
+    "facing=west,blood_type=3": {
+      "model": "haima:block/blood_glyph/3",
+      "y": 90
+    },
+    "facing=west,blood_type=4": {
+      "model": "haima:block/blood_glyph/4",
+      "y": 90
+    },
+    "facing=west,blood_type=5": {
+      "model": "haima:block/blood_glyph/5",
+      "y": 90
+    }
+  }
+}
